@@ -1,0 +1,603 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 更现代的字体 */
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa; /* 更淡雅的背景色 */
+    color: #333;
+    font-size: 13px; /* 进一步减小基础字体大小 */
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #0056b3; /* 主题色 */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+h2 {
+    color: #0056b3;
+    font-size: 1.0em;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 4px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+    font-weight: 600;
+}
+
+.layout-wrapper {
+    display: flex; /* 使用 Flexbox 布局 */
+    gap: 12px; /* 减小间距 */
+    height: calc(100vh - 60px); /* 使用视口高度 */
+}
+
+.controls-sidebar {
+    flex: 0 0 280px; /* 减小左侧边栏宽度 */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 100%;
+    overflow-y: auto; /* 允许垂直滚动 */
+    padding-right: 4px;
+}
+
+.controls-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.controls-sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+}
+
+.controls-sidebar::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.controls-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+.main-content {
+    flex: 1; /* 主内容区域占据剩余空间 */
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    overflow: auto; /* 添加滚动条 */
+}
+
+.panel {
+    background-color: #ffffff;
+    padding: 10px 12px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    border: 1px solid #e9ecef;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.panel:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 增加文件面板的突出显示 */
+.file-panel {
+    border-left: 3px solid #3498db;
+}
+
+/* 增加显示面板的突出显示 */
+.display-panel {
+    border-left: 3px solid #2ecc71;
+}
+
+/* 增加导出面板的突出显示 */
+.export-panel {
+    border-left: 3px solid #e67e22;
+}
+
+.file-controls, .control-group {
+    margin-bottom: 6px;
+}
+
+.file-input-group, .input-control {
+    margin-bottom: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.85em;
+}
+
+input[type="file"], input[type="number"], input[type="text"], select {
+    width: 100%;
+    padding: 5px 6px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 0.85em;
+    transition: border-color 0.2s;
+}
+
+input[type="file"]:focus, input[type="number"]:focus, input[type="text"]:focus, select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background-color: #0069d9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.file-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+}
+
+.file-buttons button {
+    margin-right: 0;
+    flex: 1;
+}
+
+.sample-data-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.75em;
+    margin-top: 4px;
+    margin-left: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.sample-data-btn:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.file-input-group {
+    position: relative;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.file-input-group:last-of-type {
+    border-bottom: none;
+}
+
+h3 {
+    color: #555;
+    font-size: 0.9em;
+    margin: 10px 0 6px 0;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed #eee;
+}
+
+.control-group {
+    background-color: #fbfbfb;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-left: 4px;
+    font-size: 0.8em;
+}
+
+.optional {
+    color: #7f8c8d;
+    font-style: italic;
+    margin-left: 4px;
+    font-size: 0.8em;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 6px 0;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0;
+    font-size: 0.85em;
+}
+
+.checkbox-group input {
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.input-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.input-control label {
+    width: 110px;
+    margin-right: 6px;
+    margin-bottom: 0;
+    font-size: 0.8em;
+}
+
+.input-control input[type="number"], .input-control input[type="text"] {
+    flex: 1;
+    max-width: 60px;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-right: 4px;
+    font-size: 0.85em;
+}
+
+.input-control span {
+    color: #666;
+    font-size: 0.8em;
+    margin-left: 2px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0;
+    font-size: 0.85em;
+}
+
+.radio-group input {
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+#exportBtn {
+    background-color: #27ae60;
+    width: 100%;
+    margin-top: 8px;
+    padding: 6px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.85em;
+}
+
+#exportBtn:hover {
+    background-color: #219955;
+}
+
+#visualization {
+    width: 100%;
+    overflow-x: auto; /* 如果内容超出，允许水平滚动 */
+    /* 确保SVG内容完整显示 */
+    min-width: 100%;
+}
+
+#visualization svg {
+    /* 确保SVG不会被截断 */
+    overflow: visible;
+}
+
+
+
+/* 染色体相关样式 */
+.chromosome {
+    stroke: #000;
+    stroke-width: 0.5;
+}
+
+.chromosome-group:hover .chromosome {
+    opacity: 0.9;
+}
+
+.chromosome-label {
+    font-size: 14px;
+    font-weight: 600;
+    text-anchor: end;
+    fill: #2c3e50;
+    /* 确保标签不会被截断 */
+    overflow: visible;
+}
+
+/* 亲本背景比例样式 */
+.background-percentage {
+    font-weight: 500;
+}
+
+.site-counts {
+    font-size: 9px;
+    fill: #666;
+}
+
+/* 坐标轴相关样式 */
+.axis-main-line {
+    stroke: #333;
+    stroke-width: 1.5;
+}
+
+.axis-major-tick {
+    stroke-linecap: square;
+}
+
+.axis-minor-tick {
+    stroke: #666;
+    stroke-width: 0.5;
+}
+
+.axis-major-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    fill: #333;
+    font-weight: 600;
+}
+
+.axis-arrow {
+    stroke: none;
+}
+
+/* 位点样式 */
+.site-Hom_A {
+    fill: #e74c3c;
+}
+
+.site-Hom_B {
+    fill: #3498db;
+}
+
+.site-Het_AB {
+    fill: #2ecc71;
+}
+
+/* 线图样式 */
+.site-line {
+    fill: none;
+    stroke-width: 1.5;
+}
+
+.site-line-Hom_A {
+    stroke: #e74c3c;
+}
+
+.site-line-Hom_B {
+    stroke: #3498db;
+}
+
+.site-line-Het_AB {
+    stroke: #2ecc71;
+}
+
+/* 直方图样式 */
+.histogram-bar {
+    pointer-events: none; /* 确保直方图不会捕获鼠标事件 */
+}
+
+.histogram-bar-Hom_A {
+    fill: #e74c3c;
+}
+
+.histogram-bar-Hom_B {
+    fill: #3498db;
+}
+
+.histogram-bar-Het_AB {
+    fill: #2ecc71;
+}
+
+/* 确保直方图不超出染色体边缘 */
+.chromosome-group {
+    overflow: visible;
+    clip-path: content-box;
+}
+
+/* 基因标记相关样式 */
+.gene-line {
+    stroke-width: 1;
+    stroke-dasharray: 2, 1;
+}
+
+.gene-label {
+    font-weight: 500;
+    text-anchor: start;
+    /* 确保基因标签不会被截断 */
+    overflow: visible;
+}
+
+.gene-group:hover .gene-line {
+    stroke-width: 1.5;
+}
+
+/* 图例样式 */
+.legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.legend-item circle {
+    stroke: #555;
+    stroke-width: 0.5;
+}
+
+.legend-item text {
+    font-size: 11px;
+    fill: #444;
+}
+
+.note {
+    font-size: 12px;
+    color: #666;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #fffde7;
+    border-left: 3px solid #ffd54f;
+}
+
+.btn-primary {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #388e3c;
+}
+
+/* 染色体颜色选择样式 */
+.color-radio-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.color-radio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.color-radio-group input {
+    margin-right: 0;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.color-radio-group .color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.color-radio-group input:checked + .color-box::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    font-weight: bold;
+}
+
+.color-radio-group .color-box.light-gray {
+    background-color: #f0f0f0;
+}
+
+.color-radio-group .color-box.white {
+    background-color: #ffffff;
+}
+
+.color-radio-group .color-box.black {
+    background-color: #000000;
+}
+
+.color-radio-group input:checked + .color-box.black::after {
+    color: #fff;
+}
+
+/* 添加一些微妙的过渡动画 */
+button, input, select, .panel {
+    transition: all 0.2s ease;
+}
+
+/* 优化滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .layout-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .controls-sidebar {
+        flex: none;
+        max-height: none;
+        order: 2;
+    }
+    
+    .main-content {
+        order: 1;
+        margin-bottom: 12px;
+    }
+}
