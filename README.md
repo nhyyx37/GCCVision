@@ -127,3 +127,4 @@ The visualizer requires specific tab-separated formats for its input files. You 
 4.  Load your prepared **Chromosome Data File** and the **`Progeny_1_analysis_Progeny_1_details_filtered_2.tsv`** file (as the Site Data File).
 5.  Customize the visualization to your liking.
 6.  Export the final image for your publication or report.
+
